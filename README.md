@@ -7,7 +7,7 @@ En el competitivo entorno empresarial actual, la toma de decisiones es crucial p
 <img width="199" alt="LOGOABC" src="https://github.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/assets/164790212/3dc480ce-3750-40bc-bfed-f23db87774df">  
 </p>  
 
-## Team DataMinds
+## Team DataMinds 🧩
 **Silvia Marrero**: Desarrolladora, Product Owner y Scrum Master  
 **Isabel Martínez**: Desarrolladora, Product Owner y Scrum Master  
 **Lidia Fraile**: Desarrolladora, Product Owner y Scrum Master  
@@ -16,20 +16,20 @@ En el competitivo entorno empresarial actual, la toma de decisiones es crucial p
 
 <img width="370" alt="roles" src="https://github.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/assets/164790212/cd6d7b75-6519-419b-9b3e-45fb9755bf26">
 
-## Objetivos
+## Objetivos 🎯
 - Consolidar los conocimientos de Python y SQL.
 - Utilizar control de versiones en equipo para aprender las ventajas y conflictos que genera.
 - Implementar Scrum como marco de referencia para el desarrollo del producto, basándose siempre en los valores de Agile como puntos clave del trabajo en equipo y la mejora    continua.
 - Mejorar la comunicación entre los miembros del equipo.
 - Mejorar las habilidades de comunicación en público al exponer el proyecto.
 
-## Criterios de aceptación
+## Criterios de aceptación 📑
 - Crear la infraestructura necesaria: repositorio en GitHub y con acceso para todos los miembros del equipo.
 - Extraer datos de distintas fuentes de datos y creación de una Base de Datos.
 - Tener la extracción de datos, creación de la Base de Datos e insercción de datos automatizada en funciones(obligatorio) y clases(optativo).
 - Tener en el repositorio de GitHub todo el código del desarrollo del proyecto.
 
-## Herramientas
+## Herramientas 🛠️
 - GitHub  
 - Visual Studio Code  
 - Figma  
