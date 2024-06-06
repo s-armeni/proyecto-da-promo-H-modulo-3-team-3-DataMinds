@@ -1,3 +1,7 @@
+#%%
+!pip install scikit-learn
+!pip install seaborn
+!pip install matplotlib
 
 # %%
 import os
@@ -9,17 +13,26 @@ from sklearn.experimental import enable_iterative_imputer
 from sklearn.impute import IterativeImputer
 from sklearn.impute import KNNImputer
 import re
-
-
 # %%
 def import_csv(url):
     ''' importa csv desde la carpeta de trabajoy lo guarda en un dataframe.
-    args: url/xpath donde se encuentra el archivo
-    return: df-data_frame
+    args- 
+    url/xpath donde se encuentra el archivo
+    return- 
+    (df)-data_frame sin la columna 'Unnamed'
     '''
-    df_raw=pd.read_csv(url)
-    return df_raw
+    df_raw=pd.read_csv(url) #importamos csv
+    return df_raw.iloc[:, 1:] #seleccionamos solo las columnas que nos interesan.
 # %%
+def cleck_columns (new_columns):
+    #Hacemos un if para asegurarnos que no se queda ninguna columna sin nombre
+    if len(new_columns)==len(df_data.columns):
+        df_data.columns=new_columns
+        return df_data
+    else:
+        raise ValueError('La lista new_columns debe tener la misma longitud que número de columnas tiene el DataFrame.')
+
+#%%
 def capitalize(df):
     df.columns=df.columns.str.capitalize()
     return df

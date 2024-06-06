@@ -9,37 +9,32 @@ from sklearn.impute import IterativeImputer
 from sklearn.impute import KNNImputer
 import re
 
+# %%
+print('===============================================================\n')
+print('EDA\n')
+print('===============================================================\n')
+
+#%%
+#Importamos csv.
+
+url1=('https://raw.githubusercontent.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/main/HR%20RAW%20DATA.csv')#!utilizamos url para que sea reproducible en otros ordenadores
 
 # %%
-#Importamos csv
-url1=('https://raw.githubusercontent.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/main/HR%20RAW%20DATA.csv')
-def importar_csv(url):
-    df_raw=pd.read_csv(url)
-    return df_raw
+df_data=importar_csv(url1)
+#Visualizamos el número total de filas y de columnas
+print(f'Cantidad de filas: {df_data.shape[0]}\nCantidad de columnas: {df_data.shape[1]}')
 
-# %%
-importar_csv(url1).head(1)
-# %%
-#Variable con los nombres de columna originales
-old_columns=df_data.columns.tolist()
 
-#Creamos variable con las palabras separadas mediante '_'
-new_columns=['Age', 'Attrition', 'Business_Travel', 'Daily_Rate', 'Department',
-       'Distance_From_Home', 'Education', 'Education_Field', 'employee_count',
-       'employee_number', 'Environment_Satisfaction', 'Gender', 'Hourly_Rate',
-       'Job_Involvement', 'Job_Level', 'Job_Role', 'Job_Satisfaction',
-       'Marital_Status', 'Monthly_Income', 'Monthly_Rate', 'NUM_COMPANIES_WORKED',
-       'Over_18', 'Over_Time', 'Percent_Salary_Hike', 'Performance_Rating',
-       'Relationship_Satisfaction', 'Standard_Hours', 'Stock_Option_Level',
-       'TOTAL_WORKING_YEARS', 'Training_Times_Last_Year', 'WORK_LIFE_BALANCE',
-       'Years_At_Company', 'Years_In_Current_Role', 'Years_Since_Last_Promotion',
-       'YEARS_WITH_CURR_MANAGER', 'Same_As_Monthly_Income', 'Date_Birth', 'Salary',
-       'Role_Departament', 'NUMBER_CHILDREN', 'Remote_Work']
-#Hacemos un if para asegurarnos que no se queda ninguna columna sin nombre
-if len(new_columns)==len(df_data.columns):
-    df_data.columns=new_columns
-else:
-    raise ValueError('La lista new_columns debe tener la misma longitud que número de columnas tiene el DataFrame.')
+#%%
+#limpiamos las columnas.
+#Al haberlas arreglado parcialmente a mano, importamos la lista con las nuevas columnas.
+data = open("columns_handmade.txt", "r")
+new_columns = list(data)
+print(new_columns)
+
+#%%
+#nos aseguramos que la lista tiene el numero de columnas correctas:
+df_data=check_columns(new_columns)
 # %%
 def capitalize(df):
     df.columns=df.columns.str.capitalize()
