@@ -1,6 +1,7 @@
 #%%
 import os
 from dotenv import load_dotenv
+from src_proyecto import api_proyecto_soporte as api
 import numpy as np
 import pandas as pd
 from sklearn.impute import SimpleImputer
@@ -20,7 +21,7 @@ print('===============================================================\n')
 url1=('https://raw.githubusercontent.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/main/HR%20RAW%20DATA.csv')#!utilizamos url para que sea reproducible en otros ordenadores
 
 # %%
-df_data=importar_csv(url1)
+df_data=api.import_csv(url1)
 #Visualizamos el número total de filas y de columnas
 print(f'Cantidad de filas: {df_data.shape[0]}\nCantidad de columnas: {df_data.shape[1]}')
 

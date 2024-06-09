@@ -1,7 +1,3 @@
-#%%
-!pip install scikit-learn
-!pip install seaborn
-!pip install matplotlib
 
 # %%
 import os
@@ -24,11 +20,11 @@ def import_csv(url):
     df_raw=pd.read_csv(url) #importamos csv
     return df_raw.iloc[:, 1:] #seleccionamos solo las columnas que nos interesan.
 # %%
-def cleck_columns (new_columns):
+def cleck_columns (df, new_columns):
     #Hacemos un if para asegurarnos que no se queda ninguna columna sin nombre
-    if len(new_columns)==len(df_data.columns):
-        df_data.columns=new_columns
-        return df_data
+    if len(new_columns)==len(df.columns):
+        df.columns=new_columns
+        return df
     else:
         raise ValueError('La lista new_columns debe tener la misma longitud que número de columnas tiene el DataFrame.')
 
