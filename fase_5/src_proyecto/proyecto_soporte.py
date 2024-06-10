@@ -11,6 +11,51 @@ from sklearn.impute import KNNImputer
 import re
 from word2number import w2n
 # %%
+def initial_exploration(url):
+    '''Exploracion inicial de los datos. 
+        args-(url) Enlace para la extracción del archivo csv con los datos a examinar.
+        return - (serie)informacion básica de las columnas y tipos de valor
+                - (serie)Cuerpo de la tabla de datos.
+                - (df)Valores estadísticos básicos columnas numéricas.
+                - (df)Valores estadísticos básicos columnas categóricas.
+                - (serie)Valores nulos
+    '''
+    try:
+        df = pd.read_csv(url, index_col=0)
+        print(f"--------------------------------\n")
+        print("-------------------------------General file exploration--------------------------------\n")
+    except:
+        print(f"Error reading file")
+    # Entendemos los datos de nuestro DataFrame
+    print("--------------------General information------------------------\n")
+    print(df.info())
+    print("\n------------------------Shape----------------------------------\n")
+    print(f"The Dataframe contains {df.shape[0]} rows and {df.shape[1]} columns")
+    print("\n------------------------Columns-----------------------------------\n")
+    display(pd.DataFrame(df.columns, columns=["columns"]))
+    try:
+        print("\n------------------------------------Statistics for numeric columns:----------------------------\n")
+        display(pd.DataFrame(df.describe().T))
+    except:
+        print(f"The DataFrame does not contain numeric columns:")
+        print("\n--------------------------------------------------------------------\n")
+    try:
+        print("\n------------------Statistics for categorical columns:-----------------\n")
+        display(pd.DataFrame(df.describe(include="O").T)) # incluimos entre los paréntesis el parámetro include = "object"
+    except: 
+        print(f"The DataFrame does not contain categorical columns")
+        print("\n--------------------------------------------------------------------\n")
+    print("\n----------------------Data type:-------------------------------\n")
+    display(pd.DataFrame(df.dtypes,columns = ["data_type"]))
+    print("\n-----------------------Null values:---------------------------\n")
+    print(df.isnull().sum()) 
+    print("\n----------------------Duplicate rows:--------------------------\n")
+    print(df.duplicated().sum())
+    print("\n-----------------------------------------------------------------\n")
+
+
+
+#%%
 def import_csv(url):
     ''' importa csv desde la carpeta de trabajoy lo guarda en un dataframe.
     args- 

@@ -11,9 +11,22 @@ from sklearn.impute import IterativeImputer
 from sklearn.impute import KNNImputer
 import re
 from word2number import w2n
+from src_proyecto import soporte_queries_creacion_bbdd as query
+from src_proyecto import bbdd_dataminds_soporte as bbdd
+
+
 # %%
 print('===============================================================\n')
-print('                             EDA\n')
+print('                  Initial data exploration\n')
+print('===============================================================\n')
+
+url1=('https://raw.githubusercontent.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/main/HR%20RAW%20DATA.csv')
+initial_exploration(url1)
+
+
+# %%
+print('===============================================================\n')
+print('                  Exploratory Data Analysis\n')
 print('===============================================================\n')
 
 #%%
@@ -115,3 +128,31 @@ ps.iterative_nulos(df_data,columns_iterative_imputer)
 #%%
 df_data.to_csv('hr_data_final_etl.csv')
 
+
+#%%
+print('===============================================================\n')
+print('                  Loading Data \n')
+print('===============================================================\n')
+
+# %%
+bbdd.create_bbdd(query.query_create_bbdd, "AlumnaAdalab")
+# %%
+bbdd.create_table("root", "AlumnaAdalab", "peoplemetrics", query.query_table_employees)
+# %%
+bbdd.create_table("root", "AlumnaAdalab", "peoplemetrics", query.query_table_job_details)
+# %%
+bbdd.create_table("root", "AlumnaAdalab", "peoplemetrics", query.query_table_employee_profile)
+# %%
+bbdd.create_table("root", "AlumnaAdalab", "peoplemetrics", query.query_table_salary)
+# %%
+bbdd.create_table("root", "AlumnaAdalab", "peoplemetrics", query.query_table_employee_company)
+# %%
+bbdd.insert_data('root', 'AlumnaAdalab', 'peoplemetrics',query.query_insert_data_employees, bbdd.data_employees)
+# %%
+bbdd.insert_data('root', 'AlumnaAdalab', 'peoplemetrics',query.query_insert_data_employee_profile,bbdd.data_employee_profile)
+# %%
+bbdd.insert_data('root', 'AlumnaAdalab', 'peoplemetrics',query.query_insert_data_job_details,bbdd.data_job_details)
+# %%
+bbdd.insert_data('root', 'AlumnaAdalab', 'peoplemetrics',query.query_insert_data_salary,bbdd.data_salary)
+# %%
+bbdd.insert_data('root', 'AlumnaAdalab', 'peoplemetrics',query.query_insert_data_employee_company,bbdd.data_employee_company)
