@@ -7,6 +7,8 @@ En el competitivo entorno empresarial actual, la toma de decisiones es crucial p
 <p align="center" width="100%">
 <img width="187" alt="logomedida2" src="https://github.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/assets/164790212/3a490a71-2464-482a-af16-c00917eb81a0">
 
+## Fases del Proyecto
+![Diagramma_fases_DataMinds-](https://github.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/assets/164790212/45cb8619-7f88-4a5d-9e33-2b7e3d1915a5)
 
 
 ## Team DataMinds 🧩
