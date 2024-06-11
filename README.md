@@ -34,7 +34,7 @@ En el competitivo entorno empresarial actual, la toma de decisiones es crucial p
 ## Herramientas 🛠️
 - GitHub  
 - Visual Studio Code  
-- Figma  
+- [Figma](https://github.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/blob/main/DataMinds%20(3).png) 
 - Zoom  
 - Slack  
 
