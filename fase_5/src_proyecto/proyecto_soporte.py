@@ -1,5 +1,5 @@
 
-# %%
+#%%
 import os
 from dotenv import load_dotenv
 import numpy as np
@@ -10,7 +10,8 @@ from sklearn.impute import IterativeImputer
 from sklearn.impute import KNNImputer
 import re
 from word2number import w2n
-# %%
+import mysql.connector
+
 def initial_exploration(url):
     '''Exploracion inicial de los datos. 
         args-(url) Enlace para la extracción del archivo csv con los datos a examinar.
@@ -55,7 +56,7 @@ def initial_exploration(url):
 
 
 
-#%%
+
 def import_csv(url):
     ''' importa csv desde la carpeta de trabajoy lo guarda en un dataframe.
     args- 
@@ -66,7 +67,7 @@ def import_csv(url):
     df_raw=pd.read_csv(url) #importamos csv
     return df_raw.iloc[:, 1:] #seleccionamos solo las columnas que nos interesan.
 
-# %%
+
 def check_columns (df, new_columns):
     ''' Checkea las columnas que se introducen manualmente para comprobar que están todas y cambia los nombres en el df antiguo.
         args:   (df) Df del cual se desea hacer los calculos.
@@ -80,7 +81,7 @@ def check_columns (df, new_columns):
     else:
         raise ValueError('La lista new_columns debe tener la misma longitud que número de columnas tiene el DataFrame.')
 
-#%%
+
 #Introducimos las columnas en en el df.
 def rename_columns(df, new_col):
     ''' Limpiamos lista de columnas.Renombramos las columnas por valores predefinidos
@@ -98,7 +99,7 @@ def rename_columns(df, new_col):
     df.rename(columns=d, inplace=True)
     return df
 
-#%%
+
 def capitalize(df):
     ''' Pasa la primera letra de los titulos de las columnas a mayúscula
     args:   (df) Df a modificar
@@ -107,7 +108,7 @@ def capitalize(df):
     df.columns=df.columns.str.capitalize()
     return df
 
-# %%
+
 def age_to_int(num):
     ''' modifica aquellos valores que expresan numeros en una string y los pasa a dígitos. Si encuentra valores nulos los pasa a formato np.nan
     args:   (str) str a modificar
@@ -121,7 +122,7 @@ def age_to_int(num):
         except ValueError:
             return np.nan # Transformamos los nulos en un formato válido.
 
-# %%
+
 def remove_negative_values(df,columna):
     '''Transforma los valores negativos en positivos
     args:   (df) Df a modificar
@@ -131,7 +132,7 @@ def remove_negative_values(df,columna):
     df.loc[df[columna]<0, columna]*=-1
     return df
 
-# %%
+
 def extrapolate(valor):
     '''Categoriza los valores en funcion de su valor en cuatro tipos.
     args:   (int) valor a categorizar       
@@ -150,7 +151,7 @@ def extrapolate(valor):
     elif valor>40:
         return 4
     
-# %%
+
 def remove_dollar(df, columns):
     '''Remueve el simbolo $ de una string
     args:   (df) Df a modificar
@@ -160,7 +161,7 @@ def remove_dollar(df, columns):
     for i in columns:
         df[i]=df[i].str.replace('$', '', regex=False)
     return df
-# %%
+
 def change_to_null (string):
     '''Cambia los valores 'Not Available' por valores nulos en un formato válido.
     args:   (str) valor a modificar      
@@ -170,7 +171,7 @@ def change_to_null (string):
         return np.nan
     else:
         return string
-# %%
+
 def strip_strings(cell):
     '''Elimina los espacios al principio y final de una string.
     args:   (str) valor a modificar      
@@ -180,7 +181,7 @@ def strip_strings(cell):
         return cell.strip()
     return cell
 
-# %%
+
 def male_female(df, column):
     '''transforma los 0 en 'Male' y los 1 en 'Female'
     args:   (df) Df a modificar
@@ -190,7 +191,7 @@ def male_female(df, column):
     df[column]=df[column].replace({0:'Male', 1:'Female'})
     return df
 
-# %%
+
 def unify_yes_no(df, columns):
     '''unifica los valores y los clasifica en Yes/No'
     args:   (df) Df a modificar
@@ -205,7 +206,7 @@ def unify_yes_no(df, columns):
         df[i]=df[i].astype(str).map(yes_no_map)
     return df
 
-# %%
+
 def int_to_float(df, columns):
     '''Transforma el tipo de valor intenger a float de columnas específicas'
     args:   (df) Df a modificar
@@ -215,7 +216,7 @@ def int_to_float(df, columns):
     for i in columns:
         df[i]=df[i].astype(float).round(2)
     return df
-# %%
+
 def object_to_float(df, columns):
     '''Transforma el tipo de valor object a float de columnas específicas. Cambia las ',' por '.''
     args:   (df) Df a modificar
@@ -229,7 +230,7 @@ def object_to_float(df, columns):
             df[i]=df[i].astype(float).round(2)
     return df
 
-# %%
+
 def capitalize_string(df, columns):
     ''' Pasa la primera letra de los titulos de las columnas a mayúscula de columnas específicas.
     args:   (df) Df a modificar
@@ -240,7 +241,7 @@ def capitalize_string(df, columns):
         df[i]=df[i].str.capitalize()
     return df
 
-# %%
+
 #Gestión de nulos y eliminación de columnas prescindibles
 def null_percentage(df):
     ''' Calcula el porcentaje de valores nulos en las columnas del dataframe.
@@ -273,7 +274,7 @@ def null_percentage(df):
 
     num_nulos_df=num_nulos_df[num_nulos_df['Nulos'] > 0] #filtra para aquellos >0
     return cat_nulos_df, num_nulos_df
-# %%
+
 
 def unknown_data (df): 
     ''' Transforma los valores nulos en el string 'Unknow'
@@ -286,7 +287,7 @@ def unknown_data (df):
         df[i]=df[i].fillna('Unknown')
     return df
 
-# %%
+
 def media_nulos(df, columns):
     ''' Sustituye los valores nulos de columnas específicas por el promedio del los datos de la misma.
     args:   (df) Df a modificar
@@ -299,7 +300,7 @@ def media_nulos(df, columns):
         df[i]=round(df[i], 2)
     return df
 
-# %%
+
 def iterative_nulos(df, columns):
     ''' Sustituye los valores nulos de columnas específicas por un valor estimado mediante el método estadístico Interative Imputer
     args:   (df) Df a modificar
@@ -311,3 +312,5 @@ def iterative_nulos(df, columns):
         df[i]=imputer.fit_transform(df[[i]])
         df[i]=round(df[i], 2)
     return df
+
+# %%

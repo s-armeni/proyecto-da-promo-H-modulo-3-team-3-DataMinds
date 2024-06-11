@@ -13,15 +13,15 @@ import re
 from word2number import w2n
 from src_proyecto import soporte_queries_creacion_bbdd as query
 from src_proyecto import bbdd_dataminds_soporte as bbdd
-
+import mysql.connector
 
 # %%
 print('===============================================================\n')
 print('                  Initial data exploration\n')
 print('===============================================================\n')
 
-url1=('https://raw.githubusercontent.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/main/HR%20RAW%20DATA.csv')
-initial_exploration(url1)
+# url1=('https://raw.githubusercontent.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/main/HR%20RAW%20DATA.csv')
+# initial_exploration(url1)
 
 
 # %%
