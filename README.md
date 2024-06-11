@@ -3,9 +3,11 @@
 ## ¡Bienvenidos al Proyecto "Optimización de Talento"!
 
 En el competitivo entorno empresarial actual, la toma de decisiones es crucial para el éxito a largo plazo. La retención de empleados y la satisfacción en el trabajo son vitales, ya que influyen en la productividad, moral y rentabilidad. ABC Corporation nos ha contratado para un proyecto de análisis de datos y experimentación A/B con el objetivo de identificar factores clave que afectan la satisfacción laboral y la retención de empleados. Nuestra tarea es realizar un análisis exploratorio de datos, diseñar un experimento A/B para probar hipótesis críticas y presentar un informe detallado que guiará las decisiones estratégicas de la empresa.
+
 <p align="center" width="100%">
-<img width="199" alt="LOGOABC" src="https://github.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/assets/164790212/3dc480ce-3750-40bc-bfed-f23db87774df">  
-</p>  
+<img width="187" alt="logomedida2" src="https://github.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/assets/164790212/3a490a71-2464-482a-af16-c00917eb81a0">
+
+
 
 ## Team DataMinds 🧩
 **Silvia Marrero**: Desarrolladora, Product Owner y Scrum Master  
