@@ -1,4 +1,4 @@
-![BBDD](https://github.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/blob/Sharon_datos/Captura.PNG)
+![BBDD](https://github.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/blob/main/Captura.PNG)
 
 ### Employees
 
