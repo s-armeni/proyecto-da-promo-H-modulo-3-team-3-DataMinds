@@ -53,4 +53,4 @@
  Work_life_balance FLOAT</br>
  Distance_from_home FLOAT </br>
 
-![TABLAS](https://github.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/blob/Sharon_datos/Sharon_rama/tablas_peoplemetrics.png)
+![TABLAS](https://github.com/s-armeni/proyecto-da-promo-H-modulo-3-team-3-DataMinds/blob/main/tablas_peoplemetrics.png)
